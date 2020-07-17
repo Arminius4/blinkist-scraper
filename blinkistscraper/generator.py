@@ -107,9 +107,6 @@ def generate_book_epub(book_json_or_file):
   return epub_file
 
 def generate_book_pdf(book_json_or_file, cover_img_file=False):
-  if not is_installed("wkhtmltopdf"):
-    log.warning(f"wkhtmltopdf needs to be installed and added to PATH to generate pdf files")
-    return
 
   book_json = get_or_read_json(book_json_or_file)
   filepath = get_book_pretty_filepath(book_json)
