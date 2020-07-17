@@ -2,6 +2,7 @@ import os, json, subprocess, logging
 
 from utils import *
 from ebooklib import epub
+from weasyprint import HTML
 
 log = logging.getLogger(f"loconotion.{__name__}")
 
@@ -124,8 +125,7 @@ def generate_book_pdf(book_json_or_file, cover_img_file=False):
     generate_book_html(book_json_or_file, cover_img_file)
 
   log.debug(f"Generating .pdf for {book_json['slug']}")
-  pdf_command = f"wkhtmltopdf --quiet \"{html_file}\" \"{pdf_file}\""
-  os.system(pdf_command)
+  HTML(html_file).write_pdf(pdf_file)
   return pdf_file
 
 def combine_audio(book_json, files, keep_blinks=False, cover_img_file=False):

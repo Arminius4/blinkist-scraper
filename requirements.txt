@@ -10,3 +10,4 @@ selenium==3.141.0
 selenium-wire==1.0.11
 six==1.14.0
 urllib3==1.25.8
+weasyprint

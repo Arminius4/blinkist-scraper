@@ -81,8 +81,8 @@ def main():
                       help="Generate a formatted html document for the book")
   parser.add_argument("--create-epub", action="store_true", default=True, 
                       help="Generate a formatted epub document for the book")
-  parser.add_argument("--create-pdf", action="store_true", default=False, 
-                      help="Generate a formatted pdf document for the book. Requires wkhtmltopdf")
+  parser.add_argument("--create-pdf", action="store_true", default=True, 
+                      help="Generate a formatted pdf document for the book")
   parser.add_argument("--save-cover", action="store_true", default=False,
                       help="Save a copy of the Blink cover artwork in the folder")
   parser.add_argument("--embed-cover-art", action="store_true", default=False,

@@ -73,8 +73,7 @@ optional arguments:
                         'Marketing & Sales')
   --create-html         Generate a formatted html document for the book
   --create-epub         Generate a formatted epub document for the book
-  --create-pdf          Generate a formatted pdf document for the book.
-                        Requires wkhtmltopdf
+  --create-pdf          Generate a formatted pdf document for the book
   --save-cover          Save a copy of the Blink cover artwork in the folder.
                         This image is used, also, by the generated HTML file.
   --chromedriver CHROMEDRIVER
@@ -92,9 +91,6 @@ The script uses Selenium with a Chrome driver to scrape the site. Blinkist uses 
 The script builds a nice-looking html version of the book by using the 'book.html' and 'chapter.html' files in the 'templates' folder as a base. Every parameter between curly braces in those files (e.g. `{title}`) is replaced by the appropriate value from the book metadata (dumped in the `dump` folder upon scraping), following a 1-to-1 naming convention with the json parameters (.e.g `{title}` will be replaced by the `title` parameter, `{who_should_read}` but the `who_should_read` one and so on).
 
 The special field `{__chapters__}` is replaced with all the book's chapters. Chapters are created by parsing each `chapter` object in the book metadata and using the `chapter.html` template file in the same fashion, replacing tokens with the parameters inside the `chapter` object.
-
-## Generating .pdf
-Add the `--create-pdf` argument to the script to generate a .pdf file from the .html one. This requires the [wkhtmltopdf](https://wkhtmltopdf.org/) tool to be installed and present in the PATH.
 
 ## Downloading audio
 The script download audio blinks as well. This is done by waiting for a request to the Blinkist's `audio` endpoint in their `library` api for the first chapter's audio blink which is sent as soon as the user navigates to a book's reader page; then re-using the valid request's headers to build additional requests to the rest of the chapter's audio files. The files are downloaded as `.m4a`.
